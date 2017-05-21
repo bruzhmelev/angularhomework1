@@ -18,11 +18,8 @@ import { PlacesFilterPipe } from './common/pipes/places-filter/places-filter.pip
     PlacesFilterPipe
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
+    BrowserModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

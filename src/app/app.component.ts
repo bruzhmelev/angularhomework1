@@ -13,8 +13,8 @@ export class AppComponent {
   public places$: Observable<Place[]> = places$;
   public placeTypes$: Observable<PlaceType[]> = placeTypes$;
 
-  private selectedPlace:Place;
-  private selectedPlaceType:PlaceType;
+  public selectedPlace:Place;
+  public selectedPlaceType:PlaceType;
 
 
   public onPlaceSelect(selectedPlace:Place){

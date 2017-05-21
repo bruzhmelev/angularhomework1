@@ -1,21 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'widget-teddy-bear',
   templateUrl: './teddy-bear.component.html',
   styleUrls: ['./teddy-bear.component.css']
 })
-export class TeddyBearComponent implements OnInit {
-
-  constructor() { }
+export class TeddyBearComponent {
 
   @Input()
-  public followers:number;
+  public followers: number;
 
   @Input()
-  public following:number;
-
-  ngOnInit() {
-  }
-
+  public following: number;
 }

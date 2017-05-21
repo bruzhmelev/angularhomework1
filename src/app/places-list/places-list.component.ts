@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'widget-places-list',
@@ -6,8 +6,6 @@ import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
   styleUrls: ['./places-list.component.css']
 })
 export class PlacesListComponent implements OnInit {
-
-  constructor() { }
 
   @Output()
   public onSelectPlace: EventEmitter<Place> = new EventEmitter();
@@ -21,11 +19,22 @@ export class PlacesListComponent implements OnInit {
   @Input()
   public placeTypes: PlaceType[];
 
-  private selectedPlace: Place;
-  private selectedPlaceType: PlaceType;
+  public selectedPlace: Place;
+  public selectedPlaceType: PlaceType;
 
   public ngOnInit(): void {
     this.trySelectFirst();
+  }
+
+  public selectPlace(selectedPlace: Place):void {
+    this.selectedPlace = selectedPlace;
+    this.onSelectPlace.emit(selectedPlace);
+  }
+
+  // TODO: вынести в отдельную компоненту и подписаться на событие
+  public selectPlaceType(selectedPlaceType: PlaceType): void {
+    this.selectedPlaceType = selectedPlaceType;
+    this.onSelectPlaceType.emit(selectedPlaceType);
   }
 
   private trySelectFirst() {
@@ -40,15 +49,4 @@ export class PlacesListComponent implements OnInit {
   //     this.selectPlace(filteredPlaces[0]);
   //   }
   // }
-
-  public selectPlace(selectedPlace: Place):void {
-    this.selectedPlace = selectedPlace;
-    this.onSelectPlace.emit(selectedPlace);
-  }
-
-  //TODO: вынести в отдельную компоненту и подписаться на событие
-  public selectPlaceType(selectedPlaceType: PlaceType):void {
-    this.selectedPlaceType = selectedPlaceType;
-    this.onSelectPlaceType.emit(selectedPlaceType);
-  }
 }
